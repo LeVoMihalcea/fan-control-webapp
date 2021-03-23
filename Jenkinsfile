@@ -5,10 +5,10 @@ pipeline{
         stage('Deployment'){
             steps{
                 sh '''
-                        docker-compose -f /opt/bt-webapp/docker-compose.yml down || true
-                        docker image rm bt-webapp || true
-                        docker build -t bt-webapp .
-                        docker-compose -f /opt/bt-webapp/docker-compose.yml up -d
+                        docker-compose -f /opt/fan-control-webapp/docker-compose.yml down || true
+                        docker image rm fan-control-webapp || true
+                        docker build -t fan-control-webapp .
+                        docker-compose -f /opt/fan-control-webapp/docker-compose.yml up -d
                 '''
             }
         }
