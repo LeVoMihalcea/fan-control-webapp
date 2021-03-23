@@ -1,0 +1,27 @@
+<div class="p-grid">
+  <div class="p-col-12 p-md-12 p-lg-12">
+    <p-card [style]="customTemperatureCardStyle">
+      {{this.currentTemperature}} °C
+    </p-card>
+  </div>
+
+  <div class="p-col-12 p-md-12 p-lg-12">
+    <div class="p-fluid">
+      <div class="p-field p-grid">
+        <label for="firstname" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">High Threshold</label>
+        <div class="p-col-12 p-md-10">
+          <input #highThreshold id="firstname" type="text" pInputText [(ngModel)]="thresholds.highThreshold"
+                 (keyup.enter)="sendThresholds(highThreshold.value, lowThreshold.value)">
+        </div>
+      </div>
+      <div class="p-field p-grid">
+        <label for="lastname" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Low Threshold</label>
+        <div class="p-col-12 p-md-10">
+          <input #lowThreshold id="lastname" type="text" pInputText [(ngModel)]="thresholds.lowThreshold"
+                 (keyup.enter)="sendThresholds(highThreshold.value, lowThreshold.value)">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
