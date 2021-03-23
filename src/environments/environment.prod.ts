@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  tempUrl: 'http://sudo.rocks:10005'
 };
