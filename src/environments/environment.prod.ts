@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  tempUrl: 'http://sudo.rocks:10005'
+  tempUrl: 'https://fan-control-be.sudo.rocks/'
 };
