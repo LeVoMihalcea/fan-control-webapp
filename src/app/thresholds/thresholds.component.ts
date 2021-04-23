@@ -12,12 +12,14 @@ export class ThresholdsComponent implements OnInit {
 
   constructor(private tempService: TemperatureService) {
     this.thresholds = new Thresholds(0, 0);
+    this.silentMode = false;
   }
 
   customThresholdCardStyle = {'font-size': '21px', padding: 0, margin: 0};
   currentTemperature: any;
   public thresholds: Thresholds;
   customTemperatureCardStyle = {'font-size': '42px'};
+  silentMode: boolean;
 
   ngOnInit(): void {
     this.tempService.getCurrentTemperature().subscribe((data) => {
@@ -26,7 +28,10 @@ export class ThresholdsComponent implements OnInit {
 
     this.tempService.getThresholds().subscribe((data) => {
       this.thresholds = new Thresholds(data.high_threshold, data.low_threshold);
+    });
 
+    this.tempService.getSilentMode().subscribe((data) => {
+      this.silentMode = data.silent_mode;
     });
   }
 
@@ -46,5 +51,9 @@ export class ThresholdsComponent implements OnInit {
       this.tempService.setThresholds({low_threshold: lowThresholdNumber})
         .subscribe();
     }
+  }
+
+  callBoost(): void {
+    this.tempService.callBoost().subscribe();
   }
 }

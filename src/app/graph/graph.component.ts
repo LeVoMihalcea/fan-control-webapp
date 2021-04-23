@@ -45,7 +45,6 @@ export class GraphComponent implements OnInit {
         },
       ]
     };
-    console.log(this.graphData.datasets[0].data);
   }
 
   applyDarkTheme(): void {
@@ -76,14 +75,20 @@ export class GraphComponent implements OnInit {
     };
   }
 
-  private getFilteredTemperatures(): number[] {
-    const filteredTemperatures: number[] = [];
+  private getFilteredTemperatures(): any[] {
+    const filteredTemperatures: any[] = [];
     const step = this.getStepBasedOnHours();
 
     for (let i = this.temperatures.length - 60 * this.hours; i <= this.temperatures.length; i += step) {
-      filteredTemperatures.push(this.temperatures[i]);
+      if (this.temperatures[i]) {
+        filteredTemperatures.push(this.temperatures[i][0]);
+      }
     }
-
+    const filterdTempLength = filteredTemperatures.length;
+    for (let i = 0; i < this.getTimestampLabels().length - filterdTempLength; i++){
+      filteredTemperatures.unshift(null);
+    }
+    console.log(filteredTemperatures);
     return filteredTemperatures;
   }
 

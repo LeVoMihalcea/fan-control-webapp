@@ -26,4 +26,12 @@ export class TemperatureService {
   setThresholds(thresholds: any): Observable<any>{
     return this.http.post(environment.tempUrl, thresholds);
   }
+
+  getSilentMode(): Observable<any> {
+    return this.http.get(environment.tempUrl + '/silentmode');
+  }
+
+  callBoost(): Observable<any> {
+    return this.http.get(environment.tempUrl + '/boost');
+  }
 }
