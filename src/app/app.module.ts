@@ -14,6 +14,11 @@ import {ButtonModule} from 'primeng/button';
 import {FormsModule} from '@angular/forms';
 import {ToggleButtonModule} from 'primeng/togglebutton';
 import {RippleModule} from 'primeng/ripple';
+import {MessageService} from 'primeng/api';
+import {ToastModule} from 'primeng/toast';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MessageModule} from 'primeng/message';
+import {TooltipModule} from 'primeng/tooltip';
 
 @NgModule({
   declarations: [
@@ -32,9 +37,13 @@ import {RippleModule} from 'primeng/ripple';
     ButtonModule,
     FormsModule,
     ToggleButtonModule,
-    RippleModule
+    RippleModule,
+    ToastModule,
+    BrowserAnimationsModule,
+    MessageModule,
+    TooltipModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
