@@ -26,9 +26,11 @@
 
   <div class="p-col-12 p-md-6 p-lg-6">
     <p-toggleButton [(ngModel)]="silentMode" [disabled]="true" onLabel="Silent Mode" offLabel="Normal Mode"
-                    onIcon="pi pi-moon" offIcon="pi pi-sun" [style]="{'width': '100%'}"></p-toggleButton>
+                    onIcon="pi pi-moon" offIcon="pi pi-sun" [style]="{'width': '100%'}"
+                    pTooltip="If between 23:00 and 8:00, Silent Mode activates" tooltipPosition="bottom"></p-toggleButton>
   </div>
   <div class="p-col-12 p-md-6 p-lg-6">
-    <button pButton pRipple type="button" label="Boost" (click)="callBoost()" pTooltip="Boost the fan for 5 minutes"></button>
+    <button pButton pRipple type="button" label="Boost" (click)="callBoost()"
+            pTooltip="Boost the fan for 5 minutes" tooltipPosition="bottom"></button>
   </div>
 </div>
