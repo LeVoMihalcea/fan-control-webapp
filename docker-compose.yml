@@ -1,0 +1,23 @@
+version: "2.1"
+
+services:
+
+  fan-control-webapp:
+    image: fan-control-webapp
+    container_name: fan-control-webapp
+    restart: unless-stopped
+    networks:
+      - web
+      - default
+    expose:
+      - "80"
+    labels:
+      - "traefik.backend=fan-control-webapp"
+      - "traefik.docker.network=web"
+      - "traefik.frontend.rule=Host:fan-control.sudo.rocks"
+      - "traefik.enable=true"
+      - "traefik.port=80"
+
+networks:
+  web:
+    external: true
