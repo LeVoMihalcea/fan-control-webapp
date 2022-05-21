@@ -10,7 +10,7 @@ pipeline{
 
         stage('Taking down the old container'){
             steps{
-                sh "docker compose -f /opt/fan-control-webapp/docker-compose.yml down || docker-compose -f /opt/fan-control-webapp/docker-compose.yml down || true"
+                sh "docker compose -f ./docker-compose.yml down || docker-compose -f ./docker-compose.yml down || true"
             }
         }
 
@@ -28,7 +28,7 @@ pipeline{
 
         stage('Starting up new Container'){
             steps{
-                sh "docker compose -f /opt/fan-control-webapp/docker-compose.yml up -d || docker-compose -f /opt/fan-control-webapp/docker-compose.yml up -d"
+                sh "docker compose -f ./docker-compose.yml up -d || docker-compose -f ./docker-compose.yml up -d"
             }
         }
     }
