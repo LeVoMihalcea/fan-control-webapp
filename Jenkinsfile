@@ -2,15 +2,36 @@ pipeline{
     agent any
 
     stages {
-        stage('Deployment'){
+        stage('Waking up'){
             steps{
-                sh '''
-                        docker-compose -f /opt/fan-control-webapp/docker-compose.yml down || true
-                        docker image rm fan-control-webapp || true
-                        docker build -t fan-control-webapp .
-                        docker-compose -f /opt/fan-control-webapp/docker-compose.yml up -d
-                '''
+                echo 'Waking up'
+            }
+        }
+
+        stage('Taking down the old container'){
+            steps{
+                sh "docker compose -f /opt/fan-control-webapp/docker-compose.yml down || docker-compose -f /opt/fan-control-webapp/docker-compose.yml down || true"
+            }
+        }
+
+        stage('Removing old Docker image'){
+            steps{
+                sh "docker image rm fan-control-webapp || true"
+            }
+        }
+
+        stage('Building new Docker Image'){
+            steps{
+                sh "docker build -t fan-control-webapp ."
+            }
+        }
+
+        stage('Starting up new Container'){
+            steps{
+                sh "docker compose -f /opt/fan-control-webapp/docker-compose.yml up -d || docker-compose -f /opt/fan-control-webapp/docker-compose.yml up -d || true"
             }
         }
     }
+
+    post{ always { echo 'Build completed' } }
 }
