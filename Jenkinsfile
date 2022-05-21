@@ -28,7 +28,7 @@ pipeline{
 
         stage('Starting up new Container'){
             steps{
-                sh "docker compose -f /opt/fan-control-webapp/docker-compose.yml up -d || docker-compose -f /opt/fan-control-webapp/docker-compose.yml up -d || true"
+                sh "docker compose -f /opt/fan-control-webapp/docker-compose.yml up -d || docker-compose -f /opt/fan-control-webapp/docker-compose.yml up -d"
             }
         }
     }
