@@ -12,11 +12,11 @@ services:
     expose:
       - "80"
     labels:
-      - "traefik.backend=fan-control-webapp"
-      - "traefik.docker.network=web"
-      - "traefik.frontend.rule=Host:fan-control.sudo.rocks"
-      - "traefik.enable=true"
-      - "traefik.port=80"
+      - traefik.backend=fan-control-webapp
+      - traefik.frontend.rule=Host:fan-control.sudo.rocks
+      - traefik.docker.network=web
+      - traefik.enable=true
+      - traefik.port=80
 
 networks:
   web:
